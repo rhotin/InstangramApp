@@ -29,7 +29,7 @@ public class DownloadTask extends AsyncTask<Void, Integer, Void> {
 
     @Override
     protected Void doInBackground(Void... params) {
-        URL theUrl = null;
+        URL theUrl;
         try {
             theUrl = new URL(MainActivity.INSTAGRAM_URL);
             BufferedReader reader = new BufferedReader

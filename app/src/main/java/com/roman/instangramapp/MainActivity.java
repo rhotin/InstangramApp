@@ -1,10 +1,8 @@
 package com.roman.instangramapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -15,7 +13,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements DownloadTask.Communicator{
 
-    public static final String INSTAGRAM_URL= "https://api.instagram.com/v1/tags/selfie/media/recent/?client_id=5f9365e9f1054aa991726d731c65aa02";
+    public static final String INSTAGRAM_URL= "https://api.instagram.com/v1/tags/selfie/media/recent?client_id=3fd2c6ba6d414c41ac2db73ef8fc26f6";
 
     ListView photoListView;
     ProgressBar progressBar;
