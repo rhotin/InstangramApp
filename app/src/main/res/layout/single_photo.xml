@@ -10,13 +10,4 @@
         android:id="@+id/imageView"
         android:padding="10dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Hello World"
-        android:paddingTop="20dp"
-        android:paddingRight="10dp"
-        android:id="@+id/textView" />
-
 </LinearLayout>

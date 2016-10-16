@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -41,11 +40,11 @@ class PhotoAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row = inflater.inflate(R.layout.single_photo, parent, false);
 
-        TextView userName = (TextView) row.findViewById(R.id.textView);
+        //TextView userName = (TextView) row.findViewById(R.id.textView);
         ImageView img = (ImageView) row.findViewById(R.id.imageView);
 
         PhotoObject theObject = list.get(position);
-        userName.setText(theObject.userName);
+        //userName.setText(theObject.userName);
         img.setImageBitmap(theObject.thumbnail);
 
         return row;

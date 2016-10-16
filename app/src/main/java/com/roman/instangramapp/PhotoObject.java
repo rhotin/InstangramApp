@@ -6,20 +6,20 @@ import android.os.Parcelable;
 
 
 public class PhotoObject implements Parcelable {
+    String photoName;
+    String photoExt;
     Bitmap thumbnail;
-    String userName;
-    String captionText;
 
-    PhotoObject(Bitmap photo_thumbnail, String photo_userName, String caption){
+    PhotoObject(String photo_name, String photo_ext, Bitmap photo_thumbnail) {
+        this.photoName = photo_name;
+        this.photoExt = photo_ext;
         this.thumbnail = photo_thumbnail;
-        this.userName = photo_userName;
-        this.captionText = caption;
     }
 
     protected PhotoObject(Parcel in) {
+        photoName = in.readString();
+        photoExt = in.readString();
         thumbnail = (Bitmap) in.readValue(Bitmap.class.getClassLoader());
-        userName = in.readString();
-        captionText = in.readString();
     }
 
     @Override
@@ -29,9 +29,9 @@ public class PhotoObject implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(photoName);
+        dest.writeString(photoExt);
         dest.writeValue(thumbnail);
-        dest.writeString(userName);
-        dest.writeString(captionText);
     }
 
     @SuppressWarnings("unused")

@@ -1,8 +1,8 @@
 package com.roman.instangramapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -11,11 +11,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements DownloadTask.Communicator{
+public class MainActivity extends Activity implements DownloadAlbums.CommunicatorA{
 
-    public static final String INSTAGRAM_URL= "https://api.instagram.com/v1/tags/selfie/media/recent?client_id=3fd2c6ba6d414c41ac2db73ef8fc26f6";
+    public static String locationSelected = "leaside";
+    public static final String RURL = "http://revera.mxs-s.com/displays/" + locationSelected + "/albums.json?album=";
 
-    ListView photoListView;
+    ListView albumListView;
     ProgressBar progressBar;
     TextView messageText;
 
@@ -24,17 +25,16 @@ public class MainActivity extends AppCompatActivity implements DownloadTask.Comm
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        photoListView = (ListView) findViewById(R.id.listView);
+        albumListView = (ListView) findViewById(R.id.listView);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         messageText = (TextView) findViewById(R.id.textView);
 
-        DownloadTask downloadTask = new DownloadTask(this);
-        downloadTask.execute();
+        DownloadAlbums downloadAlbum = new DownloadAlbums(this);
+        downloadAlbum.execute();
 
-        photoListView.setVisibility(View.GONE);
+        albumListView.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
         messageText.setVisibility(View.VISIBLE);
-
     }
 
     @Override
@@ -43,22 +43,22 @@ public class MainActivity extends AppCompatActivity implements DownloadTask.Comm
     }
 
     @Override
-    public void updateUI(final ArrayList<PhotoObject> photosArrayList) {
-        photoListView.setVisibility(View.VISIBLE);
+    public void updateUI(final ArrayList<AlbumObject> albumsArrayList) {
+        albumListView.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
         messageText.setVisibility(View.GONE);
 
-        PhotoAdapter adapter = new PhotoAdapter(this, photosArrayList);
-        photoListView.setAdapter(adapter);
+        AlbumAdapter adapter = new AlbumAdapter(this, albumsArrayList);
+        albumListView.setAdapter(adapter);
 
 
-        photoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        albumListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                PhotoObject objectToPass = photosArrayList.get(position);
+                AlbumObject objectToPass = albumsArrayList.get(position);
 
-                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                Intent intent = new Intent(MainActivity.this, PhotoActivity.class);
                 intent.putExtra("theObject", objectToPass);
                 startActivity(intent);
             }
