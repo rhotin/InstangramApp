@@ -14,11 +14,12 @@ import java.util.ArrayList;
 public class MainActivity extends Activity implements DownloadAlbums.CommunicatorA{
 
     public static String locationSelected = "leaside";
-    public static final String RURL = "http://revera.mxs-s.com/displays/" + locationSelected + "/albums.json?album=";
+    public static final String AlURL = "http://revera.mxs-s.com/displays/" + locationSelected + "/albums.json?album=";
 
     ListView albumListView;
     ProgressBar progressBar;
     TextView messageText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

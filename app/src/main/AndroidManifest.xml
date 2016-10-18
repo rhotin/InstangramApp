@@ -26,14 +26,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.roman.instangramapp.MainActivity" />
         </activity>
-        <activity
-            android:name=".DetailActivity"
-            android:label="@string/title_activity_detail"
-            android:parentActivityName=".PhotoActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.roman.instangramapp.PhotoActivity" />
-        </activity>
     </application>
 
 </manifest>
